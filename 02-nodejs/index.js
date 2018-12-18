@@ -5,6 +5,11 @@ OBJETIVOS
 2 - Obter o endereço do usuário pelo ID
 */
 
+// importando um módulo interno do node.js
+const util = require('util')
+const get_address_async = util.promisify( get_address )
+// usando o módulo 'promisify' -> converte callback em promise
+
 function get_user() {
     // quando ocorre algum problema - reject
     // quando ocorrer tudo bem - resolve
@@ -32,15 +37,13 @@ function get_fone(id_usuario) {
     })
 }
 
-function get_address(id_usuario) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            return resolve({
-                rua: 'dos bobos',
-                numero: 0
-            })
-        }, 2000);
-    })
+function get_address(id_usuario, callback) {
+    setTimeout(() => {
+        return callback( null,  {
+            rua: 'dos bobos',
+            numero: 0
+        });
+    }, 2000)
 }
 
 
@@ -64,15 +67,29 @@ user_promise
                 }
             })
     })
-    // .then((usuario) => {
-    //     return get_address(usuario.id)
-    // })
-    .then((usuario) => {
-        console.log('Resultado: ', usuario)
+    .then((resultado) => {
+        const address = get_address_async(resultado.usuario.id)
+        return address.then((result) => {
+            return {
+                user: resultado.usuario,
+                fone: resultado.telefone,
+                address: result
+                
+            }
+        })
+    })
+    .then((result) => {
+        console.log(`
+            Nome: ${ result.user.nome }
+            Endereço: ${ result.address.rua } - ${ result.address.numero }
+            Telefone: (${ result.fone.ddd }) ${ result.fone.telefone }
+        `)
     })
     .catch((error) => {
         console.error('DEU ERRO NA FUNÇÃO', error)
     })
+
+
 
 
 // Chamando as funções
