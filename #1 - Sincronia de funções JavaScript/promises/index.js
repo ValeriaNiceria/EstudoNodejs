@@ -88,36 +88,3 @@ user_promise
     .catch((error) => {
         console.error('DEU ERRO NA FUNÇÃO', error)
     })
-
-
-
-
-// Chamando as funções
-// get_user(function resolver_user(error, usuario) {
-//     if (error) {
-//         console.log('DEU RUIM no USUÁRIO', error)
-//         return;
-//     }
-//     get_fone(usuario.id, function resolver_fone(error1, telefone) {
-//         if (error1) {
-//             console.log('DEU RUIM no TELEFONE', error1)
-//             return;
-//         }
-        
-//         get_address(usuario.id, function resolver_address(error2, endereco) {
-//             if (error2) {
-//                 console.log('DEU RUM no ENDEREÇO', error2)
-//                 return;
-//             }
-    
-//             console.log(`
-//                 Nome usuário: ${ usuario.nome },
-//                 Endereço: ${ endereco.rua } - nº ${ endereco.numero },
-//                 Telefone: (${ telefone.ddd })${ telefone.telefone }
-//             `)
-//         })
-//     })
-// })
-
-// const fone = get_fone(user.id)
-// console.log('telefone', fone)
