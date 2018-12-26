@@ -10,6 +10,10 @@ async function obterPessoas(nome) {
     return response.data
 }
 
+module.exports = {
+    obterPessoas
+}
+
 // obterPessoas('r2').then((resultado) => {
 //     console.log('Resultado: ', resultado)
 // }).catch((error) => {
