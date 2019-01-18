@@ -11,5 +11,8 @@
   "dependencies": {
     "babel": "^6.23.0",
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
   }
 }
