@@ -1,0 +1,14 @@
+{
+  "name": "projetoPiloto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "babel": "^6.23.0"
+  }
+}
