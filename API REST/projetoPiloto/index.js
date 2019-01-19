@@ -1,19 +1,11 @@
 const express = require("express");
-const PORT = 3000;
+const consign = require("consign");
 
 const app = express();
 
-app.set("json spaces", 4);
-
-app.get("/", (req, res) => res.json({status: "Projeto Piloto API"}));
-
-app.get("/task", (req, res) => {
-	res.json({
-		tasks: [
-			{title: "Fazer compras"},
-			{title: "Consertar o pc"}
-		]
-	});
-});
-
-app.listen(PORT, () => console.log(`Projeto Piloto API = porta ${PORT}`));
+consign()
+	.include("models")
+	.then("libs/middlewares.js")
+	.then("routes")
+	.then("libs/boot.js")
+	.into(app);
