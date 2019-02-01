@@ -1,10 +1,11 @@
 const { readFile } = require('fs')
-const { promisify } = require('util')
 
+// convertendo função para promise
+const { promisify } = require('util')
 const readFileAsync = promisify(readFile)
 
-// Outra forma de obter dados do json
-// const dadosJson = require('./herois.js')
+// outra forma de obter os dados do json
+// const dadosJson = require('./herois.json')
 
 class Database {
     constructor() {
@@ -22,7 +23,12 @@ class Database {
 
     async listar(id) {
         const dados = await this.obterDadosArquivo()
-        const dadosFiltrados = dados.filter(item => id ? item.id === id : true)
+        const dadosFiltrados = dados.filter((item) => {
+            if (id) {
+                return item.id === id
+            }
+            return true
+        })
         return dadosFiltrados
     }
 }
