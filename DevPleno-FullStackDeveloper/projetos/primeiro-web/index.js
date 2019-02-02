@@ -3,9 +3,15 @@ const app = express()
 
 const PORT = 3000
 
+let count = 0
 app.get('/', (req, res) => {
-    res.send('<h1>Olá!</h1>')
+    res.send(`<h1>Olá - ${ ++count }</h1>`)
 })
+
+app.get('/page1', (req, res) => {
+    res.send(`<h1>Hello - ${ count }</h1>`)
+})
+
 
 app.listen(PORT, err => {
     if (err) {
