@@ -21,8 +21,12 @@ const lerArquivo = arquivo => {
 //     })
 
 const executa = async() => {
-    const conteudo = await lerArquivo('01.js')
-    console.log(String(conteudo))
+    try {
+        const conteudo = await lerArquivo('021.js')
+        console.log(String(conteudo))
+    } catch(error) {
+        console.log(error)
+    }
 }
 
 executa()
