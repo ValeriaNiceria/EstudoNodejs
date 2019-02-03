@@ -12,3 +12,5 @@
 #### Alterar o arquivo **package.json** *scripts:test* => *mocha*
 > npm test
 
+### rodar teste tempo real
+> mocha -w
