@@ -58,8 +58,6 @@ class Database {
         if (!id) {
             return await this.escreverArquivo([])
         }
-
-        console.log('ID', id)
         
         const dados = await this.obterDadosArquivo()
         const indice = dados.findIndex(item => item.id === parseInt(id))
